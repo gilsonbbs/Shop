@@ -9,13 +9,16 @@ namespace Web.Shop.Data.Entities
     public class Product
     {
         public int Id { get; set; }
+        [MaxLength(50, ErrorMessage = "El campo {0} debe tener como máximo {1} caracteres")]
+        [Required]
         public string Name { get; set; }
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
         public decimal Price { get; set; }
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
         [Display(Name = "Last Purchase")]
-        public DateTime LastPurchase { get; set; }
+        
+        public DateTime? LastPurchase { get; set; }
         [Display(Name = "Last Sale")]
         public DateTime LastSale { get; set; }
         [Display(Name = "Is Availabe?")]
