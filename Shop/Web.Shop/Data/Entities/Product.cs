@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 
 namespace Web.Shop.Data.Entities
 {
-    public class Product
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    public class Product : IEntity
     {
         public int Id { get; set; }
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener como máximo {1} caracteres")]
@@ -17,7 +15,7 @@ namespace Web.Shop.Data.Entities
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
         [Display(Name = "Last Purchase")]
-        
+
         public DateTime? LastPurchase { get; set; }
         [Display(Name = "Last Sale")]
         public DateTime LastSale { get; set; }

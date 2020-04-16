@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
+namespace Web.Shop.Helpers
+{
+    using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Web.Shop.Data.Entities;
-
-namespace Web.Shop.Helpers
-{
     public class UserHelper : IUserHelper
     {
         private readonly UserManager<User> userManager;
@@ -21,8 +19,8 @@ namespace Web.Shop.Helpers
         }
         public async Task<User> GetUserByEmailAsync(string email)
         {
-            var user = await this.userManager.FindByEmailAsync(email);
-            return user;
+            return await this.userManager.FindByEmailAsync(email);
+            
         }
     
     }

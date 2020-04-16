@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿namespace Web.Shop.Controllers
+{
+
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Web.Shop.Data;
-using Web.Shop.Data.Entities;
-
-namespace Web.Shop.Controllers
-{
+using Data;
+using Data.Entities;
+using Web.Shop.Helpers;
     public class ProductsController : Controller
     {
         private readonly IRepository repository;
+        private readonly IUserHelper userHelper;
 
-        public ProductsController(IRepository repository)
+
+        public ProductsController(IRepository repository, IUserHelper userHelper)
         {
             this.repository = repository;
+            this.userHelper = userHelper;
         }
 
         // GET: Products
@@ -54,7 +54,8 @@ namespace Web.Shop.Controllers
         public async Task <IActionResult> Create(Product product)
         {
             if (ModelState.IsValid)
-            {
+            { // Habrá que cambiar por el usuario loggeado
+                product.User = await this.userHelper.GetUserByEmailAsync("correosbasura2009@hotmail.com");
                 this.repository.AddProduct(product);
                 await this.repository.SaveAllAsync();
                 return RedirectToAction(nameof(Index));
@@ -92,6 +93,9 @@ namespace Web.Shop.Controllers
             {
                 try
                 {
+                    // Habrá que cambiar por el usuario loggeado
+                    product.User = await this.userHelper.GetUserByEmailAsync("correosbasura2009@hotmail.com");
+
                     this.repository.UpdateProduct(product);
                     await this.repository.SaveAllAsync();
                 }
