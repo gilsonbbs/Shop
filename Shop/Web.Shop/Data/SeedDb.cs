@@ -1,29 +1,32 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Web.Shop.Data.Entities;
-
-namespace Web.Shop.Data
+﻿namespace Web.Shop.Data
 {
+    using Microsoft.AspNetCore.Identity;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Entities;
+    using Helpers;
+
     public class SeedDb
     {
         private readonly DataContext context;
-        private readonly UserManager<User> userManager;
+        private readonly IUserHelper userHelper;
         private Random random;
 
-        public SeedDb(DataContext context, UserManager<User> userManager)
+        public SeedDb(DataContext context, IUserHelper userHelper)
         {
             this.context = context;
-            this.userManager = userManager;
+            this.userHelper = userHelper;
             this.random = new Random();
         }
+
+
         public async Task SeedAsync()
         {
             await this.context.Database.EnsureCreatedAsync();
 
-            var user = await this.userManager.FindByEmailAsync("correosbasura2009@hotmail.com");
+            var user = await this.userHelper.GetUserByEmailAsync("correosbasura2009@hotmail.com");
 
             if (user == null)
             {
@@ -35,7 +38,7 @@ namespace Web.Shop.Data
                     UserName = "correosbasura2009@hotmail.com"
                 };
 
-                var result = await this.userManager.CreateAsync(user, "123456");
+                var result = await this.userHelper.AddUserAsync(user, "123456");
 
                 if (result != IdentityResult.Success)
                 {
