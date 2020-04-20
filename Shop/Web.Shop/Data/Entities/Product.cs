@@ -15,7 +15,6 @@ namespace Web.Shop.Data.Entities
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
         [Display(Name = "Last Purchase")]
-
         public DateTime? LastPurchase { get; set; }
         [Display(Name = "Last Sale")]
         public DateTime LastSale { get; set; }
