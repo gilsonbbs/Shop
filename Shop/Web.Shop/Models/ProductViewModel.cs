@@ -4,7 +4,6 @@
     using System.ComponentModel.DataAnnotations;
     using Web.Shop.Data.Entities;
 
-
     public class ProductViewModel : Product
     {
         [Display(Name = "Image")]
