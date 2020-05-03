@@ -7,6 +7,7 @@
     using Microsoft.EntityFrameworkCore;
     using System;
     using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
     using Web.Shop.Helpers;
     using Web.Shop.Models;
@@ -26,7 +27,7 @@
         // GET: Products
         public IActionResult Index()
         {
-            return View(this.productRepository.GetAll());
+            return View(this.productRepository.GetAll().OrderBy(p => p.Name));
         }
 
         // GET: Products/Details/5
