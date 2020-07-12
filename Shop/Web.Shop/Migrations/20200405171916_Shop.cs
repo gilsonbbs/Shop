@@ -15,7 +15,7 @@ namespace Web.Shop.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false),
+                    Apellidos = table.Column<decimal>(nullable: false),
                     ImageUrl = table.Column<string>(nullable: true),
                     LastPurchase = table.Column<DateTime>(nullable: false),
                     LastSale = table.Column<DateTime>(nullable: false),

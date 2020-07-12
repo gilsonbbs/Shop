@@ -62,15 +62,18 @@
                 var path = string.Empty;
                 if (view.ImageFile != null && view.ImageFile.Length > 0)
                 {
+                    var guid = Guid.NewGuid().ToString();
+                    var file = $"{guid}.jpg";
+
                     path = Path.Combine(Directory.GetCurrentDirectory(),
                         "wwwroot\\images\\Products",
-                        view.ImageFile.FileName);
+                        file);
 
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         await view.ImageFile.CopyToAsync(stream);
                     }
-                    path = $"~/images/Products/{view.ImageFile.FileName}";
+                    path = $"~/images/Products/{file}";
                 }
                 // TODO: Pending to change to: this.User.Identity.Name
                
@@ -93,7 +96,7 @@
                 LastPurchase = view.LastPurchase,
                 LastSale = view.LastSale,
                 Name = view.Name,
-                Price = view.Price,
+                Apellidos = view.Apellidos,
                 Stock = view.Stock,
                 User = view.User
             };
@@ -127,7 +130,7 @@
                 LastSale = product.LastSale,
                 ImageUrl=product.ImageUrl,
                 Name = product.Name,
-                Price = product.Price,
+                Apellidos = product.Apellidos,
                 Stock = product.Stock,
                 User = product.User
             };
@@ -145,19 +148,23 @@
                     var path = view.ImageUrl;
                     if (view.ImageFile != null && view.ImageFile.Length > 0)
                     {
-                        path = Path.Combine(Directory.GetCurrentDirectory(),
-                            "wwwroot\\images\\Products",
-                            view.ImageFile.FileName);
+                        
+                            var guid = Guid.NewGuid().ToString();
+                            var file = $"{guid}.jpg";
 
-                        using (var stream = new FileStream(path, FileMode.Create))
-                        {
-                            await view.ImageFile.CopyToAsync(stream);
+                            path = Path.Combine(Directory.GetCurrentDirectory(),
+                                "wwwroot\\images\\Products",
+                                file);
+
+                            using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                await view.ImageFile.CopyToAsync(stream);
+                            }
+                            path = $"~/images/Products/{file}";
                         }
-                        path = $"~/images/Products/{view.ImageFile.FileName}";
-                    }
-                    // TODO: Pending to change to: this.User.Identity.Name
+                        // TODO: Pending to change to: this.User.Identity.Name
 
-                    var product = this.ToProduct(view, path);
+                        var product = this.ToProduct(view, path);
 
                     // TODO: Pending to change to: this.User.Identity.Name
                     product.User = await this.userHelper.GetUserByEmailAsync("correosbasura2009@hotmail.com");

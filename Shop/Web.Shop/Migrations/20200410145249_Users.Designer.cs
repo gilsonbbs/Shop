@@ -149,7 +149,7 @@ namespace Web.Shop.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<decimal>("Price");
+                    b.Property<decimal>("Apellidos");
 
                     b.Property<double>("Stock");
 

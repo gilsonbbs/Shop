@@ -37,7 +37,7 @@ namespace Web.Shop.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<decimal>("Price");
+                    b.Property<decimal>("Apellidos");
 
                     b.Property<double>("Stock");
 

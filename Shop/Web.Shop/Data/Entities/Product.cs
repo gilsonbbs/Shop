@@ -7,19 +7,25 @@ namespace Web.Shop.Data.Entities
     public class Product : IEntity
     {
         public int Id { get; set; }
+       
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener como máximo {1} caracteres")]
         [Required]
         public string Name { get; set; }
-        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
-        public decimal Price { get; set; }
+
+        public string Apellidos { get; set; }
+        
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
-        [Display(Name = "Last Purchase")]
+        
+        [Display(Name = "Fecha Nascimiento")]
         public DateTime? LastPurchase { get; set; }
-        [Display(Name = "Last Sale")]
+        
+        [Display(Name = "Fecha de Defunción")]
         public DateTime LastSale { get; set; }
-        [Display(Name = "Is Availabe?")]
-        public bool IsAvailabe { get; set; }
+        
+        [Display(Name = "Localización")]
+        public string IsAvailabe { get; set; }
+        
         [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = false)]
         public double Stock { get; set; }
 
