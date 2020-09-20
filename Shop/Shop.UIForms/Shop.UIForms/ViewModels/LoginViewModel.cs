@@ -38,9 +38,13 @@
                 await Application.Current.MainPage.DisplayAlert("Ok", "User or Password Incorrect", "Accept");
                 return;
             }
-            
-            await Application.Current.MainPage.DisplayAlert("Ok", "Viva", "Accept");
 
+            // await Application.Current.MainPage.DisplayAlert("Ok", "Viva", "Accept");
+
+
+
+            MainViewModel.GetInstance().Products = new ProducsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new ProductsPage());
         }
     }
 

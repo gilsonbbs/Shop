@@ -20,9 +20,11 @@ namespace Shop.Common.Service
                     {
                         BaseAddress = new Uri(urlBase)
                     };
+
                     var url = $"{servicePrefix}{controller}";
                     var response = await client.GetAsync(url);
                     var result = await response.Content.ReadAsStringAsync();
+
                     if (!response.IsSuccessStatusCode)
                     {
                         return new Response
