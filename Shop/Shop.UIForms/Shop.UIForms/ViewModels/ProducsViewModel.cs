@@ -1,6 +1,4 @@
-﻿
-
-namespace Shop.UIForms.ViewModels
+﻿namespace Shop.UIForms.ViewModels
 {
     using Common.Models;
     using Common.Service;
